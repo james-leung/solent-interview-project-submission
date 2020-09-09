@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-
-// https://styled-components.com/
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    background:red;
+  background: green;
+  color: white;
 `;
