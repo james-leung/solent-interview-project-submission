@@ -1,29 +1,26 @@
-import React from 'react';
-import Example from 'Components/Example/Example';
+import React from "react";
+import ProfileListingApp from "App/components/ProfileListing/ProfileListingApp";
 
 class Homepage extends React.Component {
-    render() {
-        return (
-            <>
-                <Example />
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        <ProfileListingApp />
+      </>
+    );
+  }
 }
 
-// OR 
+// OR
 
 const HomepageUsingHooks = () => {
-    return (
-        <>
-            <Example />
-        </>
-    );
+  return (
+    <>
+      <ProfileListingApp />
+    </>
+  );
 };
 
 export default Homepage;
 
-export { 
-    Homepage, 
-    HomepageUsingHooks
-};
+export { Homepage, HomepageUsingHooks };
