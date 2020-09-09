@@ -1,21 +1,17 @@
 import React from "react";
+import Profile from "./Profile";
 
 class ProfileItem extends React.Component {
   constructor(props) {
     super(props);
-    const { key, profile } = props;
-    this.state = {
-      key,
-      firstName: profile.name.first,
-      lastName: profile.name.last,
-    };
+    this.state = new Profile(props.profile);
   }
 
   render() {
-    const { key, firstName, lastName } = this.state;
+    const { firstName, lastName } = this.state;
     return (
       <>
-        <li>
+        <li className="list-group-item">
           {firstName} {lastName}
         </li>
       </>
