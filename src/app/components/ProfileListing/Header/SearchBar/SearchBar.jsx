@@ -1,6 +1,6 @@
 import React from "react";
 import { SearchBarWrapper } from "./SearchBar.styled";
-import { toggleToDo } from "../../actions/actions";
+import { searchProfile } from "../../actions/actions";
 import { connect } from "react-redux";
 
 class SearchBar extends React.Component {
@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
   }
 
   onKeyDown(e) {
-    dispatch(toggleToDo(e.searchParams));
+    props.updateSearch(e.searchParams);
   }
 
   render() {
@@ -27,4 +27,8 @@ class SearchBar extends React.Component {
   }
 }
 
-export default connect()(SearchBar);
+const mapDispatchToProps = (dispatch) => ({
+  updateSearch: (searchParam) => dispatch(searchProfile(searchParam))
+})
+
+export default connect(mapDispatchToProps)(SearchBar);

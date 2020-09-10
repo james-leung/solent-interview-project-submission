@@ -6,6 +6,8 @@ import { ListingWrapper } from "./ListingWrapper.styled";
 import UpdatedProfileList from "./ProfileList/UpdatedProfileList";
 
 import axios from "axios";
+import { connect } from "react-redux";
+import { setProfiles } from "./actions/actions";
 
 class ProfileListingApp extends React.Component {
   constructor(props) {
@@ -18,7 +20,9 @@ class ProfileListingApp extends React.Component {
   componentDidMount() {
     axios.get("https://randomuser.me/api/?results=10&nat=gb").then((res) => {
       this.setState({ profiles: res.data.results });
-      // console.log(this.state.profiles);
+      console.log(this.state.profiles);
+
+      this.props.setProfiles(res.data.results);
     });
   }
 
@@ -29,7 +33,7 @@ class ProfileListingApp extends React.Component {
           <Header></Header>
         </HeaderWrapper>
         <ListingWrapper>
-          {this.state.profiles.length > 0 && (
+          {this.state.profiles && (
             <UpdatedProfileList
               profiles={this.state.profiles}
             ></UpdatedProfileList>
@@ -40,4 +44,8 @@ class ProfileListingApp extends React.Component {
   }
 }
 
-export default ProfileListingApp;
+const mapDispatchToProps = (dispatch) => ({
+  setProfiles: (profiles) => dispatch(setProfiles(profiles)),
+});
+
+export default connect(null, mapDispatchToProps)(ProfileListingApp);

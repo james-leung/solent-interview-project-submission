@@ -8,10 +8,17 @@ import { fromJS } from "immutable";
 import createStore from "Redux/configureStore";
 import { browserHistory } from "Routing/history";
 import rootSaga from "Redux/sagas";
+import reducer from "../app/components/ProfileListing/reducers";
 
 import App from "App/App";
 
-const store = createStore(fromJS({}), browserHistory);
+const store = createStore(
+  fromJS({
+    searchParam: "",
+    profiles: [],
+  }),
+  browserHistory
+);
 
 store.runSaga(rootSaga);
 

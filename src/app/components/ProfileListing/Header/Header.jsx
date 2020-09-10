@@ -1,6 +1,8 @@
 import React from "react";
+import connect from "react-redux";
 import { HeaderWrapper } from "./Header.styled";
 import SearchBar from "./SearchBar/SearchBar";
+import { searchProfile } from "../actions/actions";
 
 class Header extends React.Component {
   constructor(props) {

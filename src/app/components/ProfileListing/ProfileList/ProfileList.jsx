@@ -1,13 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
 import ProfileItem from "./ProfileItem/ProfileItem";
 
 class ProfileList extends React.Component {
   constructor(props) {
     super(props);
-    
-    console.log(props.profiles);
-    this.state = { profiles: props.profiles };
+
+    this.profiles = props.profiles || [];
   }
 
   render() {
@@ -19,7 +17,7 @@ class ProfileList extends React.Component {
           {/* Profile listing */}
           <div className="col-md-8">
             <ul className="list-group">
-              {this.state.profiles.map((profile, i) => (
+              {this.profiles.map((profile, i) => (
                 <ProfileItem profile={profile} key={i}></ProfileItem>
               ))}
             </ul>
