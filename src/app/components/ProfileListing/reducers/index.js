@@ -4,6 +4,7 @@ const initialState = {
   searchParam: "",
   profiles: [],
   filteredProfiles: [],
+  profileIndex: 0,
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +27,11 @@ export default (state = initialState, action) => {
           let fullname = `${p.name.first} ${p.name.last}`.toLowerCase();
           return fullname.includes(keyword);
         }),
+      };
+    case SearchFilters.SET_PROFILE_INDEX:
+      return {
+        ...state,
+        profileIndex: action.profileIndex,
       };
     default:
       return { ...state };

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
+import ProfileModal from "./ProfileModal/ProfileModal";
 
-export default ({ filteredProfiles }) => {
-  useEffect(() => {}, [filteredProfiles.length]);
+export default ({ filteredProfiles, setProfileIndex }) => {
   return (
     <div className="container">
       <div className="row">
@@ -11,7 +11,13 @@ export default ({ filteredProfiles }) => {
         <div className="col-md-8">
           <ul className="list-group">
             {filteredProfiles.map((profile, i) => (
-              <li className="list-group-item" key={i}>
+              <li
+                className="list-group-item"
+                key={i}
+                data-toggle="modal"
+                data-target="#profileModal"
+                onClick={() => setProfileIndex(i)}
+              >
                 {profile.name.first} {profile.name.last}
               </li>
             ))}
@@ -20,6 +26,9 @@ export default ({ filteredProfiles }) => {
         {/* Right sidebar */}
         <div className="col-md-2"></div>
       </div>
+
+      {/* Modal */}
+      {filteredProfiles && <ProfileModal></ProfileModal>}
     </div>
   );
 };
