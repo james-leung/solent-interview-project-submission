@@ -1,12 +1,12 @@
 import { SearchFilters } from "../actions/actions";
-import { combineReducers } from "redux";
 
 const initialState = {
   searchParam: "",
   profiles: [],
+  filteredProfiles: [],
 };
 
-function filterProfiles(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SearchFilters.SEARCH_PROFILES:
       return {
@@ -18,11 +18,16 @@ function filterProfiles(state = initialState, action) {
         ...state,
         profiles: action.profiles,
       };
+    case SearchFilters.FILTER_PROFILES:
+      return {
+        ...state,
+        filteredProfiles: state.profiles.filter((p) => {
+          let keyword = state.searchParam.toLowerCase();
+          let fullname = `${p.name.first} ${p.name.last}`.toLowerCase();
+          return fullname.includes(keyword);
+        }),
+      };
+    default:
+      return { ...state };
   }
-}
-
-// export default filterProfiles;
-
-export default combineReducers({
-  filterProfiles,
-});
+};

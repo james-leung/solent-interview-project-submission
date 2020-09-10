@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
 import ProfileList from "./ProfileList";
 
-const mapStateToProps = (state, ownProps) => ({
-  filteredProfiles: ownProps.profiles.filter((p) => p.name.first.includes("a")),
-  profiles: state.profiles,
+const mapStateToProps = (state) => ({
+  filteredProfiles: state.profileReducer.filteredProfiles,
 });
 
 // Wrap profile list
