@@ -16,6 +16,7 @@ const store = createStore(
   fromJS({
     searchParam: "",
     profiles: [],
+    filteredProfiles: [],
   }),
   browserHistory
 );

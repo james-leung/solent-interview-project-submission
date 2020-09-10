@@ -1,6 +1,6 @@
 import React from "react";
 import { SearchBarWrapper } from "./SearchBar.styled";
-import { searchProfile } from "../../actions/actions";
+import { searchProfile, filterProfiles } from "../../actions/actions";
 import { connect } from "react-redux";
 
 class SearchBar extends React.Component {
@@ -8,9 +8,10 @@ class SearchBar extends React.Component {
     super(props);
   }
 
-  onKeyDown(e) {
-    props.updateSearch(e.searchParams);
-  }
+  onChange = (e) => {
+    this.props.updateSearch(e.target.value);
+    this.props.filterProfiles(e.target.value);
+  };
 
   render() {
     return (
@@ -20,15 +21,21 @@ class SearchBar extends React.Component {
           type="text"
           placeholder="Start typing..."
           aria-label="Search"
-          onKeyDown={this.onKeyDown}
+          onChange={this.onChange}
         ></input>
       </SearchBarWrapper>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  updateSearch: (searchParam) => dispatch(searchProfile(searchParam))
-})
+const mapStateToProps = (state) => ({
+  searchParam: state.profileReducer.searchParam,
+  profiles: state.profileReducer.profiles,
+});
 
-export default connect(mapDispatchToProps)(SearchBar);
+const mapDispatchToProps = (dispatch) => ({
+  updateSearch: (searchParam) => dispatch(searchProfile(searchParam)),
+  filterProfiles: (searchParam) => dispatch(filterProfiles(searchParam)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

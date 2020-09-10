@@ -7,24 +7,17 @@ import UpdatedProfileList from "./ProfileList/UpdatedProfileList";
 
 import axios from "axios";
 import { connect } from "react-redux";
-import { setProfiles } from "./actions/actions";
+import { setProfiles, filterProfiles } from "./actions/actions";
 
 class ProfileListingApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profiles: props.profiles,
-    };
-  }
-
-  componentDidMount() {
-    axios.get("https://randomuser.me/api/?results=10&nat=gb").then((res) => {
-      this.setState({ profiles: res.data.results });
-      console.log(this.state.profiles);
-
-      this.props.setProfiles(res.data.results);
-    });
-  }
+  componentDidMount = () => {
+    if (!this.props.loaded) {
+      axios.get("https://randomuser.me/api/?results=10&nat=gb").then((res) => {
+        // After request, save profiles to redux store
+        this.props.setProfiles(res.data.results);
+      });
+    }
+  };
 
   render() {
     return (
@@ -33,19 +26,27 @@ class ProfileListingApp extends React.Component {
           <Header></Header>
         </HeaderWrapper>
         <ListingWrapper>
-          {this.state.profiles && (
-            <UpdatedProfileList
-              profiles={this.state.profiles}
-            ></UpdatedProfileList>
-          )}
+          <UpdatedProfileList></UpdatedProfileList>
         </ListingWrapper>
       </>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  let { profiles } = state.profileReducer;
+  return {
+    loaded: profiles.length > 0,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => ({
-  setProfiles: (profiles) => dispatch(setProfiles(profiles)),
+  setProfiles: (profiles) => {
+    // Set all profiles
+    dispatch(setProfiles(profiles));
+    // Set filtered profiles (all profiles at the beginning)
+    dispatch(filterProfiles(""));
+  },
 });
 
-export default connect(null, mapDispatchToProps)(ProfileListingApp);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileListingApp);

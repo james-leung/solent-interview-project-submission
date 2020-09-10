@@ -4,15 +4,16 @@ import Profile from "./Profile";
 class ProfileItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = new Profile(props.profile);
+    this.firstName = props.firstName;
+    this.lastName = props.lastName;
+    this.key = props.keyProp;
   }
 
   render() {
-    const { firstName, lastName } = this.state;
     return (
       <>
-        <li className="list-group-item">
-          {firstName} {lastName}
+        <li className="list-group-item" key={this.key}>
+          {this.firstName} {this.lastName}
         </li>
       </>
     );

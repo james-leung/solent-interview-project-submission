@@ -1,33 +1,34 @@
 import React from "react";
-import ProfileItem from "./ProfileItem/ProfileItem";
+import ProfileModal from "./ProfileModal/ProfileModal";
 
-class ProfileList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.profiles = props.profiles || [];
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          {/* Left Sidebar */}
-          <div className="col-md-2"></div>
-          {/* Profile listing */}
-          <div className="col-md-8">
-            <ul className="list-group">
-              {this.profiles.map((profile, i) => (
-                <ProfileItem profile={profile} key={i}></ProfileItem>
-              ))}
-            </ul>
-          </div>
-          {/* Right sidebar */}
-          <div className="col-md-2"></div>
+export default ({ filteredProfiles, setProfileIndex }) => {
+  return (
+    <div className="container">
+      <div className="row">
+        {/* Left Sidebar */}
+        <div className="col-md-2"></div>
+        {/* Profile listing */}
+        <div className="col-md-8">
+          <ul className="list-group">
+            {filteredProfiles.map((profile, i) => (
+              <li
+                className="list-group-item"
+                key={i}
+                data-toggle="modal"
+                data-target="#profileModal"
+                onClick={() => setProfileIndex(i)}
+              >
+                {profile.name.first} {profile.name.last}
+              </li>
+            ))}
+          </ul>
         </div>
+        {/* Right sidebar */}
+        <div className="col-md-2"></div>
       </div>
-    );
-  }
-}
 
-export default ProfileList;
+      {/* Modal */}
+      {filteredProfiles && <ProfileModal></ProfileModal>}
+    </div>
+  );
+};
