@@ -1,5 +1,7 @@
 import React from "react";
-import ProfileModal from "./ProfileModal/ProfileModal";
+import ProfileModal from "./ProfileModal/index";
+import ProfileItemWrapper from "./ProfileItem/ProfileItemWrapper";
+import ProfileItem from "./ProfileItem";
 
 export default ({ filteredProfiles, setProfileIndex }) => {
   return (
@@ -11,15 +13,15 @@ export default ({ filteredProfiles, setProfileIndex }) => {
         <div className="col-md-8">
           <ul className="list-group">
             {filteredProfiles.map((profile, i) => (
-              <li
+              <ProfileItemWrapper
                 className="list-group-item"
                 key={i}
                 data-toggle="modal"
                 data-target="#profileModal"
                 onClick={() => setProfileIndex(i)}
               >
-                {profile.name.first} {profile.name.last}
-              </li>
+                <ProfileItem {...profile}></ProfileItem>
+              </ProfileItemWrapper>
             ))}
           </ul>
         </div>
