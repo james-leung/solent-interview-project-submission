@@ -45,7 +45,7 @@ const ProfileModal = ({ profile }) => (
 
 const mapStateToProps = (state) => {
   const { profiles, profileIndex } = state.profileReducer;
-  const profile = profiles[profileIndex];
+  const profile = profiles.find((p) => p.login.username === profileIndex);
   return { profiles, profileIndex, profile };
 };
 

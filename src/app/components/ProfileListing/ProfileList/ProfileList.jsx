@@ -18,7 +18,7 @@ export default ({ filteredProfiles, setProfileIndex }) => {
                 key={i}
                 data-toggle="modal"
                 data-target="#profileModal"
-                onClick={() => setProfileIndex(i)}
+                onClick={() => setProfileIndex(profile.login.username)}
               >
                 <ProfileItem {...profile}></ProfileItem>
               </ProfileItemWrapper>
