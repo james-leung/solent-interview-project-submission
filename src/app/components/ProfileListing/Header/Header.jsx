@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderWrapper, RowWrapper } from "./Header.styled";
+import { HeaderWrapper } from "./Header.styled";
 import SearchBar from "./SearchBar/SearchBar";
 
 class Header extends React.Component {
@@ -9,11 +9,11 @@ class Header extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-md-2"></div>
-            <RowWrapper className="col-md-8">
+            <div className="col-md-8">
               <h1>Find a member or staff</h1>
-              <p className="mt-3 mb-5">Type below to get started:</p>
+              <h3 className="mt-3 mb-5">Use the search box to get started</h3>
               <SearchBar></SearchBar>
-            </RowWrapper>
+            </div>
             <div className="col-md-2"></div>
           </div>
         </div>

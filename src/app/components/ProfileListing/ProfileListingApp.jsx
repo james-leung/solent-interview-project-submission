@@ -1,8 +1,6 @@
 import React from "react";
 import { HeaderWrapper } from "./HeaderWrapper.styled";
 import Header from "./Header/Header";
-import { ListingWrapper } from "./ListingWrapper.styled";
-// import ProfileList from "./ProfileList/ProfileList";
 import UpdatedProfileList from "./ProfileList/UpdatedProfileList";
 
 import axios from "axios";
@@ -25,9 +23,7 @@ class ProfileListingApp extends React.Component {
         <HeaderWrapper>
           <Header></Header>
         </HeaderWrapper>
-        <ListingWrapper>
-          <UpdatedProfileList></UpdatedProfileList>
-        </ListingWrapper>
+        <UpdatedProfileList></UpdatedProfileList>
       </>
     );
   }

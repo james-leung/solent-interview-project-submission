@@ -1,5 +1,4 @@
 import React from "react";
-import { SearchBarWrapper } from "./SearchBar.styled";
 import { searchProfile, filterProfiles } from "../../actions/actions";
 import { connect } from "react-redux";
 
@@ -17,16 +16,16 @@ class SearchBar extends React.Component {
     return (
       <>
         <div className="input-group">
-          <SearchBarWrapper
+          <input
             className="form-control"
             type="text"
             placeholder="Start typing..."
             aria-label="Search"
             onChange={this.onChange}
-          ></SearchBarWrapper>
+          ></input>
           <div className="input-group-append">
             <label className="input-group-text">
-              <i className="fa fa-search"></i>
+              <img src="/static/icons/seach.svg" className="icon"></img>
             </label>
           </div>
         </div>

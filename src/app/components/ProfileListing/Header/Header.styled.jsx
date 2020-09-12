@@ -7,8 +7,7 @@ export const HeaderWrapper = styled.div`
   background-image: url("https://gitlab.com/nic.neale/solent-interview-project/-/raw/master/public/images/background.jpg");
 
   display: flex;
+  text-align: left;
   align-items: center;
   justify-content: center;
 `;
-
-export const RowWrapper = styled.div``;
