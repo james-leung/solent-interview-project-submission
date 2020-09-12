@@ -15,7 +15,7 @@ class Header extends React.Component {
         <div className="col-md-2"></div>
         <div className="col-md-8">
           <h1>Find a member or staff</h1>
-          <p className="mt-3">Type below to get started:</p>
+          <p className="mt-3 mb-5">Type below to get started:</p>
           <SearchBar></SearchBar>
         </div>
         <div className="col-md-2"></div>

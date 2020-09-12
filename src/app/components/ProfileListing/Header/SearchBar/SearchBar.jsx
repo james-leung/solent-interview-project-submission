@@ -15,15 +15,22 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <SearchBarWrapper>
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Start typing..."
-          aria-label="Search"
-          onChange={this.onChange}
-        ></input>
-      </SearchBarWrapper>
+      <>
+        <div className="input-group">
+          <SearchBarWrapper
+            className="form-control"
+            type="text"
+            placeholder="Start typing..."
+            aria-label="Search"
+            onChange={this.onChange}
+          ></SearchBarWrapper>
+          <div className="input-group-append">
+            <label className="input-group-text">
+              <i className="fa fa-search"></i>
+            </label>
+          </div>
+        </div>
+      </>
     );
   }
 }

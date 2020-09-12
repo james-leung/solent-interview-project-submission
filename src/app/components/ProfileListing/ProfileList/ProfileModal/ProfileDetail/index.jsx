@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileDetailWrapper from "./ProfileDetailWrapper";
 import ProfileDetailImageWrapper from "./ProfileDetailImageWrapper";
+import moment from "moment";
 
 export default ({ name, picture, email, phone, dob }) => (
   <ProfileDetailWrapper>
@@ -25,7 +26,7 @@ export default ({ name, picture, email, phone, dob }) => (
     <div className="row mb-2">
       <div className="col-12">
         <i className="fas fa-birthday-cake fa-2x"></i>
-        <span className="ml-2">{dob.date}</span>
+        <span className="ml-2">{moment(dob.date).format("D/M/YYYY")}</span>
       </div>
     </div>
     <div className="row mb-2">
