@@ -19,19 +19,19 @@ export default ({ name, picture, email, phone, dob }) => (
     </div>
     <div className="row mb-2">
       <div className="col-12">
-        <i className="far fa-envelope fa-2x"></i>
+        <img src="/static/icons/email.svg" className="icon"></img>
         <span className="ml-2">{email}</span>
       </div>
     </div>
     <div className="row mb-2">
       <div className="col-12">
-        <i className="fas fa-birthday-cake fa-2x"></i>
+        <img src="/static/icons/dob.svg" className="icon"></img>
         <span className="ml-2">{moment(dob.date).format("D/M/YYYY")}</span>
       </div>
     </div>
     <div className="row mb-2">
       <div className="col-12">
-        <i className="fas fa-mobile-alt fa-2x"></i>
+        <img src="/static/icons/phone.svg" className="icon"></img>
         <span className="ml-2">{phone}</span>
       </div>
     </div>

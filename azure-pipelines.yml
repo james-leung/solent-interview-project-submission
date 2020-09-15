@@ -1,5 +1,5 @@
-# Node.js with webpack
-# Build a Node.js project using the webpack CLI.
+# Node.js with React
+# Build a Node.js project that uses React.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -15,8 +15,6 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g webpack webpack-cli --save-dev
+- script: 
     npm install
-    npm start
-  displayName: 'npm install, run webpack'
+    npm run build

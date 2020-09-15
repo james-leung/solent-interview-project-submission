@@ -1,12 +1,12 @@
 const BASE_CONFIG = require("./webpack.base.config");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge");
 const path = require("path");
 
 const CONFIG = {
-  mode: "development",
+  mode: "production",
   target: "web",
   entry: {
     app: "./src/client/client.js",
@@ -15,36 +15,21 @@ const CONFIG = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
-  },
-  resolve: {
-    alias: {
-      "react-dom": "@hot-loader/react-dom",
-    },
   },
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "[name].js",
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HTMLWebpackPlugin({
       template:
         "!!raw-loader!" + path.resolve(__dirname, "../src/views/index.ejs"),
       filename: "index.html",
     }),
-    new BrowserSyncPlugin(
-      {
-        server: false,
-        host: "localhost",
-        port: 3000,
-        proxy: "http://localhost:3001",
-        open: "local",
-        notify: false,
-      },
-      { reload: true }
-    ),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "../public"),
@@ -52,20 +37,6 @@ const CONFIG = {
       },
     ]),
   ],
-  devServer: {
-    host: "0.0.0.0",
-    port: 3001,
-    hot: true,
-    historyApiFallback: true,
-    watchContentBase: true,
-    quiet: false,
-    contentBase: path.join(__dirname, "../dist"),
-    watchOptions: {
-      ignored: ["node_modules"],
-      aggregateTimeout: 300,
-      poll: 1000,
-    },
-  },
 };
 
 module.exports = merge(BASE_CONFIG, CONFIG);

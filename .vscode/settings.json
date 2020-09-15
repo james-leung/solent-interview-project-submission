@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/814bef77-c852-4556-9414-0787cbe97443/resourceGroups/ProfileViewer/providers/Microsoft.Web/sites/profile-viewer",
+  "appService.deploySubpath": "."
+}
