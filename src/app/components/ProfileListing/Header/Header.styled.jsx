@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.div`
   background-size: cover;
   height: 500px;
   color: white;
-  background-image: url("https://gitlab.com/nic.neale/solent-interview-project/-/raw/master/public/images/background.jpg");
+  background-image: url("static/images/background.jpg");
 
   display: flex;
   text-align: left;

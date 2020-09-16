@@ -8,6 +8,6 @@ export default ({ name, picture, email }) => (
       <ProfileImageWrapper src={picture.thumbnail} alt={email} /> {name.first}{" "}
       {name.last}
     </ProfilePreviewWrapper>
-    <img src="/static/icons/circle-arrow.svg" />
+    <img src="/static/icons/circle-arrow.svg" className="icon-2" />
   </div>
 );

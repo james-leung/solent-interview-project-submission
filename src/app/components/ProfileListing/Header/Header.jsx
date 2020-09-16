@@ -10,8 +10,8 @@ class Header extends React.Component {
           <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-8">
-              <h1>Find a member or staff</h1>
-              <h3 className="mt-3 mb-5">Use the search box to get started</h3>
+              <h1>Profile Search</h1>
+              <h3 className="mt-3 mb-5">Begin by typing in the search box</h3>
               <SearchBar></SearchBar>
             </div>
             <div className="col-md-2"></div>

@@ -19,13 +19,13 @@ class SearchBar extends React.Component {
           <input
             className="form-control"
             type="text"
-            placeholder="Start typing..."
+            placeholder="Type here..."
             aria-label="Search"
             onChange={this.onChange}
           ></input>
           <div className="input-group-append">
             <label className="input-group-text">
-              <img src="/static/icons/seach.svg" className="icon"></img>
+              <img src="/static/icons/search.svg" className="icon"></img>
             </label>
           </div>
         </div>
