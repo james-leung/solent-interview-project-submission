@@ -6,6 +6,7 @@ import UpdatedProfileList from "./ProfileList/UpdatedProfileList";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setProfiles, filterProfiles } from "./actions/actions";
+import Credits from "./Credits/index";
 
 class ProfileListingApp extends React.Component {
   componentDidMount = () => {
@@ -24,6 +25,7 @@ class ProfileListingApp extends React.Component {
           <Header></Header>
         </HeaderWrapper>
         <UpdatedProfileList></UpdatedProfileList>
+        <Credits></Credits>
       </>
     );
   }
